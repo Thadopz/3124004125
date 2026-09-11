@@ -1,0 +1,15 @@
+# Go build and test outputs
+main.exe
+*.test
+*.prof
+coverage.out
+
+# Local Go caches and telemetry
+.gocache/
+.gotelemetry/
+
+# Editor and operating-system metadata
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
