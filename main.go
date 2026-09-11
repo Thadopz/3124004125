@@ -1,4 +1,4 @@
-// Command papercheck calculates the text similarity of two UTF-8 documents.
+// papercheck 命令计算两份 UTF-8 文档的文本相似度。
 package main
 
 import (
@@ -13,8 +13,7 @@ func main() {
 	}
 }
 
-// Run executes the command-line workflow. args must contain the original
-// document, the suspected copy, and the result file, in that order.
+// Run 执行命令行流程。args 必须依次包含原文、疑似抄袭文本和结果文件路径。
 func Run(args []string) error {
 	if len(args) != 3 {
 		return fmt.Errorf("用法: main.exe <原文绝对路径> <抄袭版绝对路径> <答案绝对路径>")

@@ -1,7 +1,7 @@
 package main
 
-// CountBigrams returns the frequency of every adjacent two-rune feature.
-// Keeping counts makes repeated passages contribute proportionally.
+// CountBigrams 统计每个相邻双 rune 特征的出现次数。
+// 保留出现次数，使重复片段按其频率参与相似度计算。
 func CountBigrams(text []rune) map[[2]rune]int {
 	counts := make(map[[2]rune]int)
 	for index := 0; index+1 < len(text); index++ {
@@ -11,7 +11,7 @@ func CountBigrams(text []rune) map[[2]rune]int {
 	return counts
 }
 
-// CountCharacters returns the frequency of each rune.
+// CountCharacters 统计每个 rune 的出现次数。
 func CountCharacters(text []rune) map[rune]int {
 	counts := make(map[rune]int)
 	for _, char := range text {
@@ -20,9 +20,8 @@ func CountCharacters(text []rune) map[rune]int {
 	return counts
 }
 
-// Similarity calculates a multiset Dice similarity in [0, 1]. Bigrams are
-// used for normal documents; character frequencies provide a stable fallback
-// when either document has fewer than two normalized characters.
+// Similarity 计算 [0, 1] 范围内的多重集 Dice 相似度。正常长度的文档使用二元组；
+// 任一文档规范化后少于两个字符时，稳定地回退到字符频次计算。
 func Similarity(original, candidate []rune) float64 {
 	if sameRunes(original, candidate) {
 		return 1

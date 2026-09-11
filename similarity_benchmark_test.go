@@ -8,8 +8,7 @@ func BenchmarkSimilarityLargeText(b *testing.B) {
 	for index := 0; index < 10000; index++ {
 		large = append(large, text...)
 	}
-	// Make the documents similar but different so the benchmark measures
-	// feature counting and intersection instead of the equality fast path.
+	// 构造内容相似但不完全相同的文档，使基准测试实际测量特征统计和交集计算，避免命中相等文本的快速路径。
 	candidate := append(append([]rune(nil), large...), '改')
 	b.ResetTimer()
 	for index := 0; index < b.N; index++ {

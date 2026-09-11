@@ -9,7 +9,7 @@ import (
 	"unicode/utf8"
 )
 
-// ReadText reads one UTF-8 document. A UTF-8 BOM at the beginning is ignored.
+// ReadText 读取一份 UTF-8 文档，并忽略开头的 UTF-8 BOM。
 func ReadText(path string) (string, error) {
 	data, err := os.ReadFile(path)
 	if err != nil {
@@ -22,7 +22,7 @@ func ReadText(path string) (string, error) {
 	return string(data), nil
 }
 
-// WriteResult writes a score in the format required by the assignment.
+// WriteResult 按作业要求写入相似度结果。
 func WriteResult(path string, score float64) error {
 	file, err := os.OpenFile(path, os.O_WRONLY|os.O_CREATE|os.O_TRUNC, 0o644)
 	if err != nil {
@@ -39,9 +39,9 @@ func WriteResult(path string, score float64) error {
 	return nil
 }
 
-// EnsureOutputDistinct prevents the result file from overwriting either input.
-// It checks normalized paths as well as filesystem identity, so aliases such
-// as "dir\\..\\orig.txt" and symlinks are handled when they resolve locally.
+// EnsureOutputDistinct 防止结果文件覆盖任一输入文件。
+// 它同时检查规范化路径和文件系统对象身份，因此能处理 "dir\\..\\orig.txt" 这类路径别名，
+// 以及能够在本地解析的符号链接。
 func EnsureOutputDistinct(resultPath string, inputPaths ...string) error {
 	resultNormalized, err := normalizedPath(resultPath)
 	if err != nil {

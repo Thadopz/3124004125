@@ -1,14 +1,14 @@
-# Go build and test outputs
+# Go 构建和测试产物
 main.exe
 *.test
 *.prof
 coverage.out
 
-# Local Go caches and telemetry
+# 本地 Go 缓存与遥测数据
 .gocache/
 .gotelemetry/
 
-# Editor and operating-system metadata
+# 编辑器及操作系统元数据
 .vscode/
 .idea/
 .DS_Store
